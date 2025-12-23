@@ -7,3 +7,4 @@ scikit-learn==1.7.2
 pydeck==0.9.1
 altair==6.0.0
 streamlit-folium==0.25.2
+folium
