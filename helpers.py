@@ -7,6 +7,7 @@ from geopy.distance import geodesic
 from geopy.geocoders import Nominatim
 import streamlit as st
 import requests
+from geopy.exc import GeocoderTimedOut, GeocoderUnavailable
 
 # =========================
 # STATION STATUS
@@ -98,13 +99,22 @@ def get_status_label(num_bikes_available):
 # =========================
 # GEOCODING
 # =========================
-def geocode(address):
-    geolocator = Nominatim(user_agent="bikeshare-app")
-    location = geolocator.geocode(address)
-    if location is None:
-        return None
-    return (location.latitude, location.longitude)
+cache = {}
 
+def geocode(address):
+    if address in cache:
+        return cache[address]
+    
+    geolocator = Nominatim(user_agent="bikeshare-app", timeout=10)
+    try:
+        location = geolocator.geocode(address)
+        result = (location.latitude, location.longitude) if location else None
+        cache[address] = result
+        return result
+    except (GeocoderTimedOut, GeocoderUnavailable) as e:
+        print(f"Geocoding error for '{address}': {e}")
+        cache[address] = None
+        return None
 
 # =========================
 # BIKE AVAILABILITY
