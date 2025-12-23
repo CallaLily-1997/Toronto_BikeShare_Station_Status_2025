@@ -1,7 +1,9 @@
-streamlit
-pandas
-requests
-pydeck
-folium
-streamlit-folium
-geopy
+streamlit==1.52.2
+pandas==2.3.3
+numpy==2.2.6
+geopandas==1.1.2
+folium==0.20.0
+scikit-learn==1.7.2
+pydeck==0.9.1
+altair==6.0.0
+streamlit-folium==0.25.2

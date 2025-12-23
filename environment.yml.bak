@@ -1,0 +1,50 @@
+name: bikeshare_streamlit
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+
+  # Core
+  - numpy
+  - pandas
+  - requests
+  - urllib3
+  - certifi
+
+  # Visualization & Streamlit
+  - matplotlib
+  - folium
+  - streamlit
+  - streamlit-folium
+
+  # Geo
+  - geopy
+  - geographiclib
+  - shapely
+  - pyproj
+  - geopandas
+  - fiona
+
+  # Jupyter / dev (optional nhưng an toàn)
+  - ipykernel
+  - ipython
+  - jupyter_client
+  - jupyter_core
+
+  # Utilities
+  - six
+  - packaging
+  - python-dateutil
+  - pytz
+  - tzdata
+
+  - pip:
+      - altair==5.3.0
+      - branca==0.7.2
+      - gitpython==3.1.43
+      - pyarrow==16.1.0
+      - pydeck==0.9.1
+      - rich==13.7.1
+      - watchdog==4.0.0
+

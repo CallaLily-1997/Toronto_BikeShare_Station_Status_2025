@@ -1,7 +1,7 @@
 from helpers import *
 import streamlit as st
 import folium  # Import folium for creating interactive maps
-from streamlit_folium import folium_static  # Import folium_static to render Folium maps in Streamlit
+from streamlit_folium import st_folium # Import folium_static to render Folium maps in Streamlit
 
 import requests  # Import requests for making HTTP requests
 import pandas as pd  # Import pandas for data manipulation
@@ -114,7 +114,7 @@ if bike_method == "Return" and findmeadock == False:
                                f"Mechanical Bike Available: {row['mechanical']}<br>"
                                f"eBike Available: {row['ebike']}", max_width=300)
         ).add_to(m)
-    folium_static(m)  # Display the map in the Streamlit app
+    st_folium(m)  # Display the map in the Streamlit app
 
 if bike_method == "Rent" and findmeabike == False:
     center = [43.65306613746548, -79.38815311015]  # Coordinates for Toronto
@@ -133,7 +133,7 @@ if bike_method == "Rent" and findmeabike == False:
                                f"Mechanical Bike Available: {row['mechanical']}<br>"
                                f"eBike Available: {row['ebike']}", max_width=300)
         ).add_to(m)
-    folium_static(m)  # Display the map in the Streamlit app
+    st_folium(m)  # Display the map in the Streamlit app
 
 # Logic for finding a bike
 if findmeabike:
@@ -172,7 +172,7 @@ if findmeabike:
                 weight=5,
                 tooltip="it'll take you {} to get here.".format(duration),
             ).add_to(m1)
-            folium_static(m1)  # Display the map in the Streamlit app
+            st_folium(m1)  # Display the map in the Streamlit app
             with col3:
                 st.metric(label=":green[Travel Time (min)]", value=duration)  # Display travel time
 
@@ -213,6 +213,6 @@ if findmeadock:
                 weight=5,
                 tooltip="it'll take you {} to get here.".format(duration),
             ).add_to(m1)
-            folium_static(m1)  # Display the map in the Streamlit app
+            st_folium(m1)  # Display the map in the Streamlit app
             with col3:
                 st.metric(label=":green[Travel Time (min)]", value=duration)  # Display travel time
