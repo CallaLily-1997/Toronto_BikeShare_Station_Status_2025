@@ -1,0 +1,18 @@
+# Ignore Git for Windows folder accidentally inside project
+Git/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Conda / mamba
+.env
+.conda/
+env/
+
+# VS Code
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
